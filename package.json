@@ -1,0 +1,26 @@
+{
+  "name": "docker",
+  "version": "1.0.0",
+  "description": "Collection of Dockerfiles for different purposes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "aws-cli:copycreds": "cp -r ~/.aws aws-cli/",
+    "aws-cli:build": "npm run aws-cli:copycreds && docker build -t cizer/aws-cli aws-cli",
+    "aws-cli:run": "docker run -it cizer/aws-cli",
+    "eb-cli:copycreds": "cp -r ~/.aws eb-cli/",
+    "eb-cli:build": "npm run eb-cli:copycreds && docker build -t cizer/eb-cli eb-cli",
+    "eb-cli:run": "docker run -it -v ${PWD}:/env cizer/eb-cli"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cizer/docker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cizer/docker/issues"
+  },
+  "homepage": "https://github.com/cizer/docker#readme"
+}
