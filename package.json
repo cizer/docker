@@ -10,7 +10,9 @@
     "aws-cli:run": "docker run -it cizer/aws-cli",
     "eb-cli:copycreds": "cp -r ~/.aws eb-cli/",
     "eb-cli:build": "npm run eb-cli:copycreds && docker build -t cizer/eb-cli eb-cli",
-    "eb-cli:run": "docker run -it -v ${PWD}:/env cizer/eb-cli"
+    "eb-cli:run": "docker run -it -v ${PWD}:/env cizer/eb-cli",
+    "grails:build": "docker build -t cizer/grails grails",
+    "grails:run": "docker run -it cizer/grails"
   },
   "repository": {
     "type": "git",
