@@ -12,7 +12,7 @@ RUN curl -kL https://bootstrap.pypa.io/get-pip.py | python3
 RUN pip install awscli --upgrade
 
 ENV HOME=/home
-COPY .aws /home/.aws
+COPY .aws* /home/.aws
 
 ENTRYPOINT ["aws"]
 CMD ["--version"]

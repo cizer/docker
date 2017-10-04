@@ -38,7 +38,7 @@ To run the image (default command option is --version)
 $ npm run eb-cli:run
 EB CLI 3.11.0 (Python 2.7.6)
 ```
-EB CLI should run in an directory with an Elastic Beanstalk application/environment configured.
+EB CLI should run in an directory with an Elastic Beanstalk application/environment configured. There you could customise this command to in an npm package or simply create an alias. Here's an example displaying the status.
 ```bash
 $ cd ~/my-eb-env
 $ docker run -it -v ${PWD}:/env cizer/eb-cli status
@@ -53,4 +53,25 @@ Environment details for: my-eb-env
   Updated: 2017-10-04 13:42:58.212000+00:00
   Status: Ready
   Health: Green
+```
+
+## Grails
+
+### Build
+To build the docker image
+
+```bash
+npm run grails:build
+```
+
+### Run
+To run the image (default command option is --version)
+```bash
+$ npm run grails:run
+Grails version: 2.5.3
+```
+To run commands (run-app from within a grails app directory)
+```bash
+cd ~/my-grails-app
+docker run -it -v ${PWD}:/app cizer/grails run-app
 ```

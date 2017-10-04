@@ -12,7 +12,7 @@ RUN curl -kL https://bootstrap.pypa.io/get-pip.py | python
 RUN pip install awsebcli --upgrade
 
 ENV HOME=/home
-COPY .aws /home/.aws
+COPY .aws* /home/.aws
 WORKDIR /env
 
 ENTRYPOINT ["eb"]
