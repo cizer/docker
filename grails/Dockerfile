@@ -1,6 +1,7 @@
 FROM java:8
+LABEL maintainer="richie.mackay@gmail.com"
 
-ENV GRAILS_VERSION 2.5.3
+ENV GRAILS_VERSION 2.5.0
 
 # Install Grails
 WORKDIR /usr/lib/jvm

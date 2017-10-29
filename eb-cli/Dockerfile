@@ -1,5 +1,5 @@
 FROM ubuntu:trusty
-MAINTAINER Richie Mackay "richie.mackay@gmail.com"
+LABEL maintainer="richie.mackay@gmail.com"
 
 RUN apt-get -y update && \
     apt-get install -y -q \
