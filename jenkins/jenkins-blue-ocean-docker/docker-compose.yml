@@ -1,0 +1,44 @@
+version: '2'
+services:
+  dind:
+    image: docker:dind
+    volumes:
+      - 'jenkins_data:/var/jenkins_home'
+      - jenkins_docker_certs:/certs/client
+      - '/c/Users/richie.mackay:/home'
+    ports:
+      - '3000:3000'
+    privileged: true
+    environment: 
+      - DOCKER_TLS_CERTDIR=/certs
+    networks:
+      jenkins:
+        aliases: 
+          - docker
+
+  jenkins:
+    image: 'jenkinsci/blueocean:latest'
+    ports:
+      - '${JENKINS_HTTP_PORT}:8080'
+      - '${JENKINS_HTTPS_PORT}:8443'
+    volumes:
+      - 'jenkins_data:/var/jenkins_home'
+      - jenkins_docker_certs:/certs/client:ro
+      - '/c/Users/richie.mackay:/home'
+    environment:
+      - 'JENKINS_OPTS=--httpPort=8080 --httpsPort=8443'
+      - DOCKER_HOST=tcp://docker:2376
+      - DOCKER_CERT_PATH=/certs/client
+      - DOCKER_TLS_VERIFY=1
+    networks: 
+      jenkins:
+      
+volumes:
+  jenkins_data:
+    driver: local
+  jenkins_docker_certs:
+    driver: local
+
+networks:
+  jenkins:
+    driver: bridge
